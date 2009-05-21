@@ -1,0 +1,23 @@
+<fieldset class="nested">
+  <legend>
+    Product Files
+  </legend><hr/>
+  <div id="assets" >
+    <% @product.assets.each do |asset| %>
+      <% f.fields_for :assets, asset do |asset_form| %>
+        <div id="<%= dom_id(asset, :edit)%>" class="edit_asset_form">
+          <%= render :partial => "products/asset_form",
+            :locals => {:asset_form => asset_form, :asset => asset} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <p>
+    <%= image_tag("ajax_arrows.gif",  :id => "asset_form_loading_animation", :style => "display:none;") %>
+    <%= link_to_remote("Add Product File",
+      :url => add_new_asset_form_products_path(:format => :js),
+      :loading => "show_nested_form_animation('asset')",
+      :complete => "hide_nested_form_animation('asset')",
+      :html => {:id => "add_asset_link"}) %>
+  </p>
+</fieldset>

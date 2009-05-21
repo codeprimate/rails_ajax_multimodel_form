@@ -1,0 +1,4 @@
+<% fields_for "product[assets_attributes][-#{Time.now.to_i}]", (asset = @product.assets.new) do |asset_form| %>
+  <%= render :partial => "products/asset_form",
+    :locals => {:asset_form => asset_form, :asset => asset} %>
+<% end %>

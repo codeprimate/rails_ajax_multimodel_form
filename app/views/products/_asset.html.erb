@@ -1,0 +1,5 @@
+<div class="text">
+  <% unless asset.new_record? %>
+    <span class="filename"><%= link_to(asset.filename, asset.public_filename)  %> [<%= sprintf("%0.1f", (asset.size.to_f / 1024.0)) %>k]</span><br/>
+  <% end %>
+</div>

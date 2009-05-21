@@ -1,0 +1,1 @@
+page.insert_html :bottom, :assets, :partial => "products/new_asset_form"

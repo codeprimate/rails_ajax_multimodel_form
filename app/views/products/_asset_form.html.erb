@@ -1,0 +1,17 @@
+<div class="associated_form text">
+  <% unless asset.new_record?%>
+    <div style="float:right;">
+	  <%= link_to(image_tag(asset.public_filename(:thumb)), asset.public_filename)%>
+    </div>
+  <% end %>
+  <div>
+    <label>File:</label>
+    <%= asset_form.file_field :uploaded_data%>
+    <% unless asset.new_record? %>
+      <br/>
+      <span class="filename"><%= asset.filename %> [<%= sprintf("%0.1f", (asset.size.to_f / 1024.0)) %>k]</span>
+      <%= asset_form.check_box :_delete%> Remove
+    <% end %>
+    <%= link_to_function("Cancel", "this.up('div.associated_form').remove(); this.remove()") if asset.new_record? %>
+  </div>
+</div>

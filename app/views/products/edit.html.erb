@@ -1,0 +1,11 @@
+<h1>Edit product</h1>
+
+<% form_for(@product, :url => product_path, :html => { :method => :put, :multipart => true }) do |f| %>
+    <%= f.error_messages %>
+	<%= render :partial => "form", :locals => {:f => f}%>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', products_path %>
